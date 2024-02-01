@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Documentation</title>
+</head>
+<body>
+    <h1>REST API Documentation</h1>
+
+    <!-- Orders Functions -->
+    <h2>Orders</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Function</th>
+                <th>Json Parameters</th>
+                <th>Permission</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Get All Orders</td>
+                <td>-</td>
+                <td>Admin</td>
+                <td>GET /orders</td>
+            </tr>
+            <tr>
+                <td>Get Orders for User</td>
+                <td>{ "userID": "user_id" }</td>
+                <td>User</td>
+                <td>GET /orders/:userID</td>
+            </tr>
+            <tr>
+                <td>Delete Order</td>
+                <td>-</td>
+                <td>User</td>
+                <td>DELETE /orders/:id</td>
+            </tr>
+            <tr>
+                <td>Update Order Status</td>
+                <td>-</td>
+                <td>Admin</td>
+                <td>PUT /orders/:id</td>
+            </tr>
+            <tr>
+                <td>Add Order</td>
+                <td>{ "dueDate": "yyyy-mm-dd", "address": {}, "produtsInOrder": [{minimalWatch},...] }</td>
+                <td>User</td>
+                <td>POST /orders</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Users Functions -->
+    <h2>Users</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Function</th>
+                <th>Json Parameters</th>
+                <th>Permission</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Get All Users</td>
+                <td>-</td>
+                <td>Admin</td>
+                <td>GET /users</td>
+            </tr>
+            <tr>
+                <td>Add User</td>
+                <td>{ "userName": "username", "passward": "password", "email": "user@example.com" }</td>
+                <td>-</td>
+                <td>POST /users</td>
+            </tr>
+            <tr>
+                <td>Login</td>
+                <td>{ "userName": "username" or "email": "email" or both , "passward": "password" }  </td>
+                <td>-</td>
+                <td>POST /users/login</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Watches Functions -->
+    <h2>Watches</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Function</th>
+                <th>Json Parameters</th>
+                <th>Permission</th>
+                <th>URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Get All Watches</td>
+                <td>-</td>
+                <td>-</td>
+                <td>GET /watches</td>
+            </tr>
+            <tr>
+                <td>Get Watch by ID</td>
+                <td>-</td>
+                <td>-</td>
+                <td>GET /watches/:id</td>
+            </tr>
+            <tr>
+                <td>Delete Watch</td>
+                <td>-</td>
+                <td>Admin</td>
+                <td>DELETE /watches/:id</td>
+            </tr>
+            <tr>
+                <td>Update Watch</td>
+                <td>{ "prodName": "newName", "description": "newDesc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "newUrl", "price": 100 }</td>
+                <td>Admin</td>
+                <td>PUT /watches/:id</td>
+            </tr>
+            <tr>
+                <td>Add Watch</td>
+                <td>{ "prodName": "name", "description": "desc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "url", "price": 100 }</td>
+                <td>Admin</td>
+                <td>POST /watches</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
