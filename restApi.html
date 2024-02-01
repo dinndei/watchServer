@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>REST API Documentation</h1>
-
+<h4>the user lala has an admin role, to log in:{ "userName": "lala", "passward": "1234lala", "email": "lala@din.com" }</h4>
     <!-- Orders Functions -->
     <h2>Orders</h2>
     <table border="1">
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>Get Orders for User</td>
-                <td>{ "userID": "user_id" }</td>
+                <td>-</td>
                 <td>User</td>
                 <td>GET /orders/:userID</td>
             </tr>
@@ -46,7 +46,18 @@
             </tr>
             <tr>
                 <td>Add Order</td>
-                <td>{ "dueDate": "yyyy-mm-dd", "address": {}, "produtsInOrder": [{minimalWatch},...] }</td>
+                <td>{ "dueDate": "yyyy-mm-dd",<br> "address":  {
+                    "city": "Example City",
+                    "road": "Example Road",
+                    "number": 123
+                  },<br> "produtsInOrder": [{
+                    "MinimalWatch": <br>{
+                      "prodName": "Watch1",
+                      "imgUrl": "https://example.com/watch1.jpg",
+                      "price": 100
+                    },
+                    "amnt": 5
+                  },...] }</td>
                 <td>User</td>
                 <td>POST /orders</td>
             </tr>

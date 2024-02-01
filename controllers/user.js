@@ -6,7 +6,8 @@ export const getAllUsers = async (req, res) => {
         let all = await User.find({}, "-passward");
         res.json(all);
     }
-    catch {
+    catch (error){
+        console.error(error)
         res.status(400).send("error in get all users");
     }
 }

@@ -2,7 +2,7 @@ import pkg from 'jsonwebtoken'
 
 //אימות משתמש
 export const authenticate=(req,res,next)=>{
-let token=req.header["access-token"];
+let token=req.headers["access-token"];
 if(!token)
 return res.status(403).send("missing token")
 try{
@@ -17,7 +17,7 @@ return res.status(401).send("token not approved")
 }
 //אימות מנהל
 export const authenticateAdmin=(req,res,next)=>{
-    let token=req.header["access-token"];
+    let token=req.headers["access-token"];
     if(!token)
     return res.status(403).send("missing token")
     try{

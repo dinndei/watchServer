@@ -5,7 +5,8 @@ export const getAllOrders = async (req, res) => {
         let allOrders = await Order.find({});
         res.json(allOrders);
     }
-    catch {
+    catch (error){
+        console.error(error)
         res.status(400).send("error in get all orders");
     }
 }
@@ -73,8 +74,9 @@ export const updateOrderIsOut = async (req, res) => {
         const updatedDocument = await Order.findByIdAndUpdate(id, { isOut: true }, { new: true })
         res.json(updatedDocument)
     }
-    catch {
-        res.send("error in sending order out")
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in send order out");
     }
 
 }

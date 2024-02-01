@@ -16,8 +16,9 @@ export const getAllWatches = async (req, res) => {
             .limit(perPage);
         res.json(allWatch)
     }
-    catch {
-        res.status(400).send("error in getAllWatches");
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in get all watches");
     }
 }
 export const getWatchByID = async (req, res) => {
@@ -30,8 +31,9 @@ export const getWatchByID = async (req, res) => {
             return res.status(404).send("no watch with this id");
         res.json(watchWithID)
     }
-    catch {
-        res.status(400).send("error in getWatchByID");
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in get watch by id");
     }
 }
 export const addWatch = async (req, res) => {
@@ -43,10 +45,12 @@ export const addWatch = async (req, res) => {
     let newWatch = new Watch({ prodName, description, ManufacturDate, imgUrl, price })
     try {
         await newWatch.save()
-        res.send("watch added successfully")
+        res.json(newWatch)
+        
     }
-    catch {
-        res.send("error in addWatch")
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in add watch");
     }
 }
 export const deleteWatch = async (req, res) => {
@@ -60,8 +64,9 @@ export const deleteWatch = async (req, res) => {
         res.json(watchWithID)
 
     }
-    catch {
-        res.status(400).send("error in deleteWatch");
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in delete watch");
     }
 }
 export const updateWatch = async (req, res) => {
@@ -70,17 +75,16 @@ export const updateWatch = async (req, res) => {
     if (!mongoose.isValidObjectId(id))
         return res.status(400).send("id not mongoose fitting");
     try {
-        let toUpdate = {}
-        if (prodName)
-            toUpdate.prodName = prodName
-        if (description)
-            toUpdate.description = description
-        if (ManufacturDate)
-            toUpdate.ManufacturDate = ManufacturDate
-        if (imgUrl)
-            toUpdate.imgUrl = imgUrl
-        if (price)
-            toUpdate.price = price
+        let toUpdate = await Watch.findById(id)
+        if(!toUpdate)
+        return res.status(404).send("watch not found")
+            toUpdate.prodName = prodName||toUpdate.prodName
+            toUpdate.description = description||toUpdate.description
+            toUpdate.ManufacturDate = ManufacturDate||toUpdate.ManufacturDate
+            toUpdate.imgUrl = imgUrl||toUpdate.imgUrl
+            toUpdate.prodName = prodName||toUpdate.prodName
+            toUpdate.price = price||toUpdate.price
+    
         const { error } = watchValidator(toUpdate);
         if (error) {
             return res.status(400).send(error.details[0].message);
@@ -88,8 +92,9 @@ export const updateWatch = async (req, res) => {
         const updatedDocument = await Watch.findByIdAndUpdate(id, toUpdate, { new: true })
         res.json(updatedDocument)
     }
-    catch {
-        res.send("error in addWatch")
+    catch (error){
+        console.error(error)
+        res.status(400).send("error in update watch");
     }
 
 }
