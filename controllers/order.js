@@ -21,7 +21,7 @@ export const addOrder = async (req, res) => {
    
         let newOrder = new Order({ userID, dueDate, address, produtsInOrder, ordDate})
         await newOrder.save()
-        res.send("order added successfully")
+        res.json(newOrder)
     }
     catch(error) {
         console.error(error)
@@ -45,7 +45,7 @@ export const deleteOrder = async (req, res) => {
             return res.status(400).send("order sent allready");
             await Order.findByIdAndDelete(id);
 
-        res.json(orderWithID._id)
+        res.json(orderWithID)
 
     }
     catch (error){

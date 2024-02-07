@@ -25,8 +25,8 @@ export const addUser = async (req, res) => {
         let newUser = new User({ userName, email, passward: hashedpassward })
         await newUser.save();
         let { _id, userName } = newUser;
-        let token = generateToken({ _id, userName });
-        res.json({ _id, userName, token })
+        let token = generateToken({ _id, userName,role });
+        res.json({ _id, userName, token, role })
     }
     catch (error) {
         console.error(error);

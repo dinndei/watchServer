@@ -7,9 +7,9 @@ export const getAllWatches = async (req, res) => {
         if (price)
             searchObject.price = price
         if (searchProdName)
-            searchObject.searchProdName = new RegExp(searchProdName, "i")
+            searchObject.prodName = new RegExp(searchProdName, "i")
         if (searchProdDesc)
-            searchObject.searchProdDesc = new RegExp(searchProdDesc, "i")
+            searchObject.description = new RegExp(searchProdDesc, "i")
         let allWatch = await Watch.find(searchObject)
             .sort({ price: 1 })
             .skip((page - 1) * perPage)

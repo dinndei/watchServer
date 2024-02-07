@@ -4,19 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REST API Documentation</title>
+    <style>
+        body{
+            background-color: aliceblue;
+            font-family: monospace,'Courier New', Courier;
+           
+        }
+        thead{
+            font-size: larger; 
+        }
+    </style>
 </head>
 <body>
     <h1>REST API Documentation</h1>
 <h4>the user lala has an admin role, to log in:{ "userName": "lala", "passward": "1234lala", "email": "lala@din.com" }</h4>
-    <!-- Orders Functions -->
+<h4>base url:http://localhost:5000/</h4>    
+<!-- Orders Functions -->
     <h2>Orders</h2>
     <table border="1">
         <thead>
             <tr>
-                <th>Function</th>
-                <th>Json Parameters</th>
-                <th>Permission</th>
-                <th>URL</th>
+                <th> Function </th>
+                <th> Json Parameters </th>
+                <th> Permission </th>
+                <th> method </th>
+                <th> URL </th>
+                <th> response </th>
+                <th> crud </th>
             </tr>
         </thead>
         <tbody>
@@ -24,42 +38,60 @@
                 <td>Get All Orders</td>
                 <td>-</td>
                 <td>Admin</td>
-                <td>GET /orders</td>
+                <td>GET</td>
+                <td> /orders</td>
+                <td>[{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}...]</td>
+                <td>read</td>
             </tr>
             <tr>
                 <td>Get Orders for User</td>
                 <td>-</td>
                 <td>User</td>
-                <td>GET /orders/:userID</td>
+                <td>GET</td>
+                <td> /orders/:userID</td>
+                <td>[{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}...]</td>
+                <td>read</td>
+                
             </tr>
             <tr>
                 <td>Delete Order</td>
                 <td>-</td>
                 <td>User</td>
-                <td>DELETE /orders/:id</td>
+                <td>DELETE</td>
+                <td> /orders/:id</td>
+                <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}</td>
+                <td>delete</td>
             </tr>
             <tr>
                 <td>Update Order Status</td>
                 <td>-</td>
                 <td>Admin</td>
-                <td>PUT /orders/:id</td>
+                <td>PUT</td>
+                <td> /orders/:id</td>
+                <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],<strong>isOut:true</strong>}</td>
+                <td>update</td>
             </tr>
             <tr>
                 <td>Add Order</td>
                 <td>{ "dueDate": "yyyy-mm-dd",<br> "address":  {
-                    "city": "Example City",
-                    "road": "Example Road",
+                    "city": "Example City",<br>
+                    "road": "Example Road",<br>
                     "number": 123
-                  },<br> "produtsInOrder": [{
-                    "MinimalWatch": <br>{
-                      "prodName": "Watch1",
+                  },<br> "produtsInOrder": <br>[{
+                    "MinimalWatch":{
+                      "prodName": "Watch1", <br>
                       "imgUrl": "https://example.com/watch1.jpg",
                       "price": 100
                     },
                     "amnt": 5
                   },...] }</td>
                 <td>User</td>
-                <td>POST /orders</td>
+                <td>POST</td>
+                <td> /orders</td>
+                <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}</td>
+
+                <td>add</td>
+
             </tr>
         </tbody>
     </table>
@@ -69,10 +101,14 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Function</th>
-                <th>Json Parameters</th>
-                <th>Permission</th>
-                <th>URL</th>
+                <th> Function </th>
+                <th> Json Parameters </th>
+                <th> Permission </th>
+                <th> method </th>
+                <th> URL </th>
+                <th> response </th>
+                <th> crud </th>
+
             </tr>
         </thead>
         <tbody>
@@ -80,19 +116,33 @@
                 <td>Get All Users</td>
                 <td>-</td>
                 <td>Admin</td>
-                <td>GET /users</td>
+                <td>GET</td>
+                <td> /users</td>
+                <td>{
+                    email,
+                    passward,
+                    role(USER/ADMIN),
+                    signInDate}</td>
+                <td>read</td>
             </tr>
             <tr>
                 <td>Add User</td>
                 <td>{ "userName": "username", "passward": "password", "email": "user@example.com" }</td>
                 <td>-</td>
-                <td>POST /users</td>
+                <td>POST</td>
+                <td> /users</td>
+                <td>{ _id, userName, token, role }</td>
+                <td>add</td>
+
             </tr>
             <tr>
                 <td>Login</td>
                 <td>{ "userName": "username" or "email": "email" or both , "passward": "password" }  </td>
                 <td>-</td>
-                <td>POST /users/login</td>
+                <td>POST</td>
+                <td> /users/login</td>
+                <td>{ _id, userName, token, role }</td>
+                <td>-</td>
             </tr>
         </tbody>
     </table>
@@ -102,10 +152,13 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Function</th>
-                <th>Json Parameters</th>
-                <th>Permission</th>
-                <th>URL</th>
+                <th> Function </th>
+                <th> Json Parameters </th>
+                <th> Permission </th>
+                <th> method </th>
+                <th> URL </th>
+                <th> response </th>
+                <th> crud </th>
             </tr>
         </thead>
         <tbody>
@@ -113,31 +166,75 @@
                 <td>Get All Watches</td>
                 <td>-</td>
                 <td>-</td>
-                <td>GET /watches</td>
+                <td>GET</td>
+                <td> /watches</td>
+                <td>[{
+                    prodName,
+                    description,
+                    ManufacturDate,
+                    imgUrl,
+                    price
+                 }...]</td>
+                <td>read</td>
             </tr>
             <tr>
                 <td>Get Watch by ID</td>
                 <td>-</td>
                 <td>-</td>
-                <td>GET /watches/:id</td>
+                <td>GET</td>
+                <td> /watches/:id</td>
+                <td>[{
+                    prodName,
+                    description,
+                    ManufacturDate,
+                    imgUrl,
+                    price
+                 }...]</td>
+                <td>read</td>
             </tr>
             <tr>
                 <td>Delete Watch</td>
                 <td>-</td>
                 <td>Admin</td>
-                <td>DELETE /watches/:id</td>
+                <td>DELETE</td>
+                <td> /watches/:id</td>
+                <td>{
+                    prodName,
+                    description,
+                    ManufacturDate,
+                    imgUrl,
+                    price}</td>
+                <td>delete</td>
             </tr>
             <tr>
                 <td>Update Watch</td>
                 <td>{ "prodName": "newName", "description": "newDesc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "newUrl", "price": 100 }</td>
                 <td>Admin</td>
-                <td>PUT /watches/:id</td>
+                <td>PUT</td>
+                <td> /watches/:id</td>
+                <td>{
+                    prodName,
+                    description,
+                    ManufacturDate,
+                    imgUrl,
+                    price}</td>
+                <td>update</td>
+
             </tr>
             <tr>
                 <td>Add Watch</td>
                 <td>{ "prodName": "name", "description": "desc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "url", "price": 100 }</td>
                 <td>Admin</td>
-                <td>POST /watches</td>
+                <td>POST</td>
+                <td> /watches</td>
+                <td>{
+                    prodName,
+                    description,
+                    ManufacturDate,
+                    imgUrl,
+                    price}</td>
+                <td>add</td>
+
             </tr>
         </tbody>
     </table>
