@@ -19,8 +19,8 @@
     <h1>REST API Documentation</h1>
 <h4>the user lala has an admin role, to log in:{ "userName": "lala", "passward": "1234lala", "email": "lala@din.com" }</h4>
 <h4>base url:http://localhost:5000/</h4>    
-<!-- Orders Functions -->
-    <h2>Orders</h2>
+<!-- order Functions -->
+    <h2>order</h2>
     <table border="1">
         <thead>
             <tr>
@@ -35,20 +35,20 @@
         </thead>
         <tbody>
             <tr>
-                <td>Get All Orders</td>
+                <td>Get All orders</td>
                 <td>-</td>
                 <td>Admin</td>
                 <td>GET</td>
-                <td> /orders</td>
+                <td> /order</td>
                 <td>[{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}...]</td>
                 <td>read</td>
             </tr>
             <tr>
-                <td>Get Orders for User</td>
+                <td>Get orders for User</td>
                 <td>-</td>
                 <td>User</td>
                 <td>GET</td>
-                <td> /orders/:userID</td>
+                <td> /order/:userID</td>
                 <td>[{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}...]</td>
                 <td>read</td>
                 
@@ -58,7 +58,7 @@
                 <td>-</td>
                 <td>User</td>
                 <td>DELETE</td>
-                <td> /orders/:id</td>
+                <td> /order/:id</td>
                 <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}</td>
                 <td>delete</td>
             </tr>
@@ -67,7 +67,7 @@
                 <td>-</td>
                 <td>Admin</td>
                 <td>PUT</td>
-                <td> /orders/:id</td>
+                <td> /order/:id</td>
                 <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],<strong>isOut:true</strong>}</td>
                 <td>update</td>
             </tr>
@@ -87,7 +87,7 @@
                   },...] }</td>
                 <td>User</td>
                 <td>POST</td>
-                <td> /orders</td>
+                <td> /order</td>
                 <td>{_id,ordDate,dueDate,address{},userID,produtsInOrder[{}...],isOut}</td>
 
                 <td>add</td>

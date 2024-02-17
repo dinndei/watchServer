@@ -1,7 +1,7 @@
 import { Watch, watchValidator } from "../models/watch.js";
 import mongoose from 'mongoose';
 export const getAllWatches = async (req, res) => {
-    const { searchProdName, searchProdDesc, page, perPage = 5, price } = req.query;
+    const { searchProdName, searchProdDesc, page, perPage, price } = req.query;
     try {
         let searchObject = {}
         if (price)
