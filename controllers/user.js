@@ -48,6 +48,6 @@ export const addUser = async(req, res) => {
     }
     catch (error) {
         console.error(error)
-        res.status(400).send("error in loging in user");
+        res.status(400).send("error in add new user");
     }
 }
