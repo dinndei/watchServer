@@ -10,7 +10,9 @@ const watchSchema=mongoose.Schema({
 const minimalWatchSchema=mongoose.Schema({
    prodName:{type:String},
    imgUrl:{type:String},
-   price:{type:Number}
+   price:{type:Number},
+   amnt:{type:Number}
+
  })
 
 
@@ -18,7 +20,7 @@ const minimalWatchSchema=mongoose.Schema({
 export const watchValidator=(_watchToValidate)=>{
 const watchSchema=Joi.object({
    prodName:Joi.string().required(),
-   description:Joi.string().min(10).max(30),
+   description:Joi.string().min(10).max(1000),
    ManufacturDate:Joi.date(),
    imgUrl:Joi.string(),
    price:Joi.number().min(0).required()
@@ -30,7 +32,9 @@ export const validateMinWatch=(_minWatchToValidate)=>{
 const minimalWatchSchema=Joi.object({
     prodName:Joi.string().required(),
     imgUrl:Joi.string(),
-    price:Joi.number().min(0)
+    price:Joi.number().min(0),
+    amnt:Joi.number().min(0)
+
  })
  return minimalWatchSchema.validate(_minWatchToValidate);
 }
