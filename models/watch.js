@@ -22,7 +22,7 @@ const watchSchema=Joi.object({
    prodName:Joi.string().required(),
    description:Joi.string().min(10).max(1000),
    ManufacturDate:Joi.date(),
-   imgUrl:Joi.string(),
+   imgUrls:Joi.array().items(Joi.string()),
    price:Joi.number().min(0).required()
 })
 return watchSchema.validate(_watchToValidate, {allowUnknown:true});
@@ -31,7 +31,7 @@ return watchSchema.validate(_watchToValidate, {allowUnknown:true});
 export const validateMinWatch=(_minWatchToValidate)=>{
 const minimalWatchSchema=Joi.object({
     prodName:Joi.string().required(),
-    imgUrl:Joi.string(),
+    imgUrls:Joi.array().items(Joi.string()),
     price:Joi.number().min(0),
     amnt:Joi.number().min(0)
 

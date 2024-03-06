@@ -37,12 +37,12 @@ export const getWatchByID = async (req, res) => {
     }
 }
 export const addWatch = async (req, res) => {
-    const { prodName, description, ManufacturDate, imgUrl, price } = req.body
-    const { error } = watchValidator({ prodName, description, ManufacturDate, imgUrl, price });
+    const { prodName, description, ManufacturDate, imgUrls, price } = req.body
+    const { error } = watchValidator({ prodName, description, ManufacturDate, imgUrls, price });
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
-    let newWatch = new Watch({ prodName, description, ManufacturDate, imgUrl, price })
+    let newWatch = new Watch({ prodName, description, ManufacturDate, imgUrls, price })
     try {
         await newWatch.save()
         res.json(newWatch)
@@ -70,7 +70,7 @@ export const deleteWatch = async (req, res) => {
     }
 }
 export const updateWatch = async (req, res) => {
-    const { prodName, description, ManufacturDate, imgUrl, price } = req.body
+    const { prodName, description, ManufacturDate, imgUrls, price } = req.body
     const { id } = req.params
     if (!mongoose.isValidObjectId(id))
         return res.status(400).send("id not mongoose fitting");
@@ -81,7 +81,7 @@ export const updateWatch = async (req, res) => {
             toUpdate.prodName = prodName||toUpdate.prodName
             toUpdate.description = description||toUpdate.description
             toUpdate.ManufacturDate = ManufacturDate||toUpdate.ManufacturDate
-            toUpdate.imgUrl = imgUrl||toUpdate.imgUrl
+            toUpdate.imgUrls = imgUrls||toUpdate.imgUrls
             toUpdate.prodName = prodName||toUpdate.prodName
             toUpdate.price = price||toUpdate.price
     
