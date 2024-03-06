@@ -239,5 +239,43 @@
         </tbody>
     </table>
 
+    <!-- opinion Functions -->
+    <h2>Opinion</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th> Function </th>
+                <th> Json Parameters </th>
+                <th> Permission </th>
+                <th> method </th>
+                <th> URL </th>
+                <th> response </th>
+                <th> crud </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Get All Opinions</td>
+                <td>-</td>
+                <td>Admin</td>
+                <td>GET</td>
+                <td> /opinion</td>
+                <td>[{"_id":"---","opinion": "---", "rank": "4"},...]</td>
+                <td>read</td>
+            </tr>
+            
+            <tr>
+                <td>Add Watch</td>
+                <td>{"opinion": "---", "rank": "4"}</td>
+                <td>User</td>
+                <td>POST</td>
+                <td> /opinion</td>
+                <td>-</td>
+                <td>add</td>
+
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>

@@ -17,7 +17,8 @@ export const orderValidator = (_orderToValidate) => {
       address: { city: Joi.string().required(), road: Joi.string().required(), number: Joi.number().required() },
       userID: Joi.string().required(),
       produtsInOrder: Joi.array().items().required(),
-      isOut: Joi.boolean()
+      isOut: Joi.boolean(),
+      
    })
 
    return orderJoi.validate(_orderToValidate);
