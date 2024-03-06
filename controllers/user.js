@@ -38,7 +38,7 @@ export const addUser = async(req, res) => {
         let { userName,passward,email } = req.body;
         let user = await User.findOne({ $or: [{ userName }, { email }] });
         if (user)
-            return res.status(404).send("there is allready a user with this userName or email")
+            return res.status(409).send("there is allready a user with this userName or email")
         let hashedpassward = await bcrypt.hash(passward, 7);
         let newUser = new User({ userName, email, passward: hashedpassward })
         await newUser.save();
