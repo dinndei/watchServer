@@ -19,13 +19,13 @@ export const addOrder = async (req, res) => {
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
-    ///new
-    produtsInOrder.array.forEach(element => {
-      let {error}=MinimalWatchValidator(element);
-      if (error) {
-        return res.status(400).send(error.details[0].message);
-    }
-    });
+    // ///new
+    // produtsInOrder.array.forEach(element => {
+    //   let {error}=MinimalWatchValidator(element);
+    //   if (error) {
+    //     return res.status(400).send(error.details[0].message);
+    // }
+    // });
    ///caution
         let newOrder = new Order({ userID, dueDate, address, produtsInOrder, ordDate})
         await newOrder.save()
