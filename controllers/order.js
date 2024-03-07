@@ -34,7 +34,7 @@ export const addOrder = async (req, res) => {
     catch(error) {
         console.error(error)
         res.status(400)
-        res.send(err.message)
+        res.send(error.message)
     }
 
 }
