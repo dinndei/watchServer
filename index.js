@@ -6,7 +6,7 @@ import orderrouter from "./routes/order.js";
 import oprouter from "./routes/opinion.js";
 import mongoose from "mongoose";
 import { connectToDB } from './config/dbConfig.js';
-import cors from "cors"
+import cors from "cors";
 import { errorHandling } from "./middlewear/errorHandling.js";
 config();
 connectToDB();
@@ -17,7 +17,7 @@ app.use("/watch", watchrouter)
 app.use("/user", userrouter)
 app.use("/order", orderrouter)
 app.use("/opinion", oprouter)
-app.use(errorHandling);
-app.use(express.static('/images'))
+app.use(express.static(path.join(__dirname, 'images')));
 let port = process.env.PORT || 5000;
 app.listen(port, console.log(`app is listening on port ${port}`));
+app.use(errorHandling);
