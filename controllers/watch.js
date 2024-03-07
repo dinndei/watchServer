@@ -38,7 +38,7 @@ export const getWatchByID = async (req, res) => {
 }
 export const addWatch = async (req, res) => {
     const { prodName, description, ManufacturDate, imgUrl, price } = req.body
-    const { error } = watchValidator({ prodName, description, ManufacturDate, imgUrls, price });
+    const { error } = watchValidator({ prodName, description, ManufacturDate, imgUrl, price });
     if (error) {
         return res.status(400).send(error.details[0].message);
     }
