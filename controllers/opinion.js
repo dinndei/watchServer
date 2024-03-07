@@ -1,4 +1,4 @@
-import { Opinion } from "../models/opinion.js.js";
+import { Opinion } from "../models/opinion.js";
 export const getAllOpinions = async (req, res) => {
     try {
         let allOps = await Opinion.find({});
