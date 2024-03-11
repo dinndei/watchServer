@@ -81,7 +81,7 @@ export const updateProduct = async (req, res) => {
             toUpdate.prodName = prodName||toUpdate.prodName
             toUpdate.description = description||toUpdate.description
             toUpdate.ManufacturDate = ManufacturDate||toUpdate.ManufacturDate
-            toUpdate.imgUrl = imgUrls||toUpdate.imgUrl
+            toUpdate.imgUrl = imgUrl||toUpdate.imgUrl
             toUpdate.prodName = prodName||toUpdate.prodName
             toUpdate.price = price||toUpdate.price
     
