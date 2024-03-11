@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import Joi from 'joi';
-import { MinimalWatch } from './watch.js'
 const orderSchema = mongoose.Schema({
    ordDate:{ type: Date, default: new Date() } ,
    dueDate: Date,

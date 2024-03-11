@@ -1,6 +1,6 @@
 import express from "express";
 import { config } from "dotenv";
-import  watchrouter from "./routes/watch.js";
+import  productrouter from "./routes/product.js";
 import userrouter from "./routes/user.js";
 import orderrouter from "./routes/order.js";
 import oprouter from "./routes/opinion.js";
@@ -13,7 +13,7 @@ connectToDB();
 const app = express();
 app.use(cors());
 app.use(express.json())
-app.use("/watch", watchrouter)
+app.use("/product", productrouter)
 app.use("/user", userrouter)
 app.use("/order", orderrouter)
 app.use("/opinion", oprouter)

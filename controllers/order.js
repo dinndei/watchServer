@@ -1,6 +1,6 @@
 import { Order, orderValidator } from "../models/order.js";
 import mongoose from 'mongoose';
-import { MinimalWatch } from "../models/watch.js";
+import { MinimalProduct } from "../models/product.js";
 export const getAllOrders = async (req, res) => {
     try {
         let allOrders = await Order.find({});
@@ -21,7 +21,7 @@ export const addOrder = async (req, res) => {
     }
     // ///new
     // produtsInOrder.array.forEach(element => {
-    //   let {error}=MinimalWatchValidator(element);
+    //   let {error}=MinimalProductValidator(element);
     //   if (error) {
     //     return res.status(400).send(error.details[0].message);
     // }

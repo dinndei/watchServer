@@ -80,7 +80,7 @@
                   },<br> "produtsInOrder": <br>[{
                     "MinimalWatch":{
                       "prodName": "Watch1", <br>
-                      "imgUrl": "https://example.com/watch1.jpg",
+                      "imgUrl": "https://example.com/product1.jpg",
                       "price": 100
                     },
                     "amnt": 5
@@ -167,7 +167,7 @@
                 <td>-</td>
                 <td>-</td>
                 <td>GET</td>
-                <td> /watch?searchProdName=""&searchProdDesc=""&page=""&perPage=""&price=</td>
+                <td> /product?searchProdName=""&searchProdDesc=""&page=""&perPage=""&price=</td>
                 <td>[{
                     prodName,
                     description,
@@ -182,7 +182,7 @@
                 <td>-</td>
                 <td>-</td>
                 <td>GET</td>
-                <td> /watch/:id</td>
+                <td> /product/:id</td>
                 <td>[{
                     prodName,
                     description,
@@ -197,7 +197,7 @@
                 <td>-</td>
                 <td>Admin</td>
                 <td>DELETE</td>
-                <td> /watch/:id</td>
+                <td> /product/:id</td>
                 <td>{
                     prodName,
                     description,
@@ -211,7 +211,7 @@
                 <td>{ "prodName": "newName", "description": "newDesc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "newUrl", "price": 100 }</td>
                 <td>Admin</td>
                 <td>PUT</td>
-                <td> /watch/:id</td>
+                <td> /product/:id</td>
                 <td>{
                     prodName,
                     description,
@@ -226,7 +226,7 @@
                 <td>{ "prodName": "name", "description": "desc", "ManufacturDate": "yyyy-mm-dd", "imgUrl": "url", "price": 100 }</td>
                 <td>Admin</td>
                 <td>POST</td>
-                <td> /watch</td>
+                <td> /product</td>
                 <td>{
                     prodName,
                     description,
