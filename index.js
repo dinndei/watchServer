@@ -17,7 +17,7 @@ app.use("/watch", watchrouter)
 app.use("/user", userrouter)
 app.use("/order", orderrouter)
 app.use("/opinion", oprouter)
-app.use(express.static('/images'));
+app.use('/images', express.static('images'));
 let port = process.env.PORT || 5000;
 app.listen(port, console.log(`app is listening on port ${port}`));
 app.use(errorHandling);
